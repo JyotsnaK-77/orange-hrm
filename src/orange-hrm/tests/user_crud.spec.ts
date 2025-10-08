@@ -19,11 +19,11 @@ test("Adding Job Title to OrangeHRM", async({loginPage,sideBarPage,jobPage,jobTi
   await loginPage.login("Admin", "admin123");
   await sideBarPage.navigateToAdmin();
   await jobPage.navigateToJob();
-  await jobPage.clickoOnJobTitle();
+  await jobPage.clickOnJobType('Job Titles');
   await jobTitlePage.clickOnAddButton();
-  await addJobTitlePage.jobTitle('Test Analyst');
-  await addJobTitlePage.jobDescription('Manual/Automation Testing');
-  await addJobTitlePage.jobSpecification('src/orange-hrm/test-data/Game+Delivery.xlsx');
-  await addJobTitlePage.noteInput('Testing team');
+  await addJobTitlePage.enterJobTitle('Test Analyst');
+  await addJobTitlePage.enterJobDescription('Manual/Automation Testing');
+  await addJobTitlePage.uploadJobSpecificationFile('src/orange-hrm/test-data/Game+Delivery.xlsx');
+  await addJobTitlePage.enterNoteInput('Testing team');
   await addJobTitlePage.clickSave();
 })

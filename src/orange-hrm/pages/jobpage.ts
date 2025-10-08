@@ -7,7 +7,7 @@ export class JobPage {
 async navigateToJob() {
   await this.page.locator('.oxd-topbar-body-nav-tab-item').filter({ hasText: 'Job' }).click();
 }
-async clickoOnJobTitle() {
-  await this.page.getByRole('menuitem',{name:'Job Titles'}).click();
+async clickOnJobType(submenu:'Job Titles'|'Pay Grades'|'Employment Status'|'Job Categories'|'Work Shifts') {
+  await this.page.getByRole('menuitem',{name: submenu}).click();
 }
 }
