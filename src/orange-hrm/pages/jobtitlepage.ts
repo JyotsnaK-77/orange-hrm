@@ -5,6 +5,6 @@ export class JobTitlePage {
     this.page = page;
   }
   async clickOnAddButton() {
-  await this.page.getByRole('button', { name: 'Add' }).click();
-}
+    await this.page.getByRole("button", { name: "Add" }).click();
+  }
 }

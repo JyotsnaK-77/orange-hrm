@@ -1,22 +1,18 @@
 import { Page } from "@playwright/test";
-export class JobPage {
+type OrganizationType = "General Information" | "Locations" | "Structure"
+export class OrganizationPage {
   readonly page: Page;
   constructor(page: Page) {
     this.page = page;
   }
-  async navigateToJob() {
+  async navigateToOrganization() {
     await this.page
       .locator(".oxd-topbar-body-nav-tab-item")
-      .filter({ hasText: "Job" })
+      .filter({ hasText: "Organization" })
       .click();
   }
-  async clickOnJobType(
-    submenu:
-      | "Job Titles"
-      | "Pay Grades"
-      | "Employment Status"
-      | "Job Categories"
-      | "Work Shifts"
+  async clickOnOrganizationType(
+    submenu: OrganizationType
   ) {
     await this.page.getByRole("menuitem", { name: submenu }).click();
   }

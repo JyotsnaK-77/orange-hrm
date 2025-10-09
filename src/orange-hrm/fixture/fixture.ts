@@ -3,18 +3,20 @@ import { LoginPage } from "../pages/loginpage";
 import { SideBarPage } from "../pages/sidebarpage";
 import { AdminUserManagementPage } from "../pages/adminusermanagementpage";
 import { AddUserPage } from "../pages/adduserpage";
-import { JobPage } from "../pages/jobpage";
+import { NavigationBarMenu } from "../pages/navigationbarmenu";
 import { JobTitlePage } from "../pages/jobtitlepage";
 import { AddJobTitlePage } from "../pages/addjobtitlepage";
+import { UpdateGeneralInfoPage } from "../pages/updategeneralinfopage";
 
 export const test = base.extend<{
   loginPage: LoginPage;
   sideBarPage: SideBarPage;
-  adminUserManagementPage:AdminUserManagementPage;
-  addUserPage:AddUserPage;
-  jobPage:JobPage;
-  jobTitlePage:JobTitlePage;
-  addJobTitlePage:AddJobTitlePage;
+  adminUserManagementPage: AdminUserManagementPage;
+  addUserPage: AddUserPage;
+  navigationBarMenu: NavigationBarMenu;
+  jobTitlePage: JobTitlePage;
+  addJobTitlePage: AddJobTitlePage;
+  updateGeneralInfoPage: UpdateGeneralInfoPage;
 }>({
   loginPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
@@ -32,16 +34,20 @@ export const test = base.extend<{
     const addUserPage = new AddUserPage(page);
     await use(addUserPage);
   },
-   jobPage: async ({ page }, use) => {
-    const jobPage = new JobPage(page);
-    await use(jobPage);
-   },
-    jobTitlePage: async ({ page }, use) => {
+  navigationBarMenu: async ({ page }, use) => {
+    const navigationBarMenu = new NavigationBarMenu(page);
+    await use(navigationBarMenu);
+  },
+  jobTitlePage: async ({ page }, use) => {
     const jobTitlePage = new JobTitlePage(page);
     await use(jobTitlePage);
-    },
-     addJobTitlePage: async ({ page }, use) => {
+  },
+  addJobTitlePage: async ({ page }, use) => {
     const addJobTitlePage = new AddJobTitlePage(page);
     await use(addJobTitlePage);
-     },
+  },
+  updateGeneralInfoPage: async ({ page }, use) => {
+    const updateGeneralInfoPage = new UpdateGeneralInfoPage(page);
+    await use(updateGeneralInfoPage);
+  },
 });
