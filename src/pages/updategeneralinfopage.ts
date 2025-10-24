@@ -6,7 +6,7 @@ type GeneralInformation = {orgname: string,
     fax: string,
     email: string,
     address1: string,
-    address2: string,
+    address2?: string,
     city: string,
     state: string,
     zipcode: string,
@@ -59,13 +59,14 @@ export class UpdateGeneralInfoPage {
       .filter({ hasText: "Address Street 1" })
       .locator("input")
       .fill(generalinformationobj.address1);
-
-    await this.page
+  
+if(generalinformationobj.address2){
+  await this.page
       .locator(".oxd-grid-item")
       .filter({ hasText: "Address Street 2" })
       .locator("input")
       .fill(generalinformationobj.address2);
-
+}
     await this.page
       .locator(".oxd-grid-item")
       .filter({ hasText: "City" })

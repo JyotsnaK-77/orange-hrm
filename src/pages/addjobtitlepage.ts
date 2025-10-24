@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 export class AddJobTitlePage {
   readonly page: Page;
   constructor(page: Page) {
@@ -22,5 +22,12 @@ export class AddJobTitlePage {
   }
   async clickSave() {
     await this.page.getByRole("button", { name: "Save" }).click();
+  }
+   async addJobTitleUsingAPI(title:string){
+    await this.page.request.post("https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/job-titles",
+      {data:{title:title,description:"",specification:null,note:""}})
+  }
+  async validateJobTitle(title:string){
+    await expect(this.page.getByText(title)).toBeVisible();
   }
 }
